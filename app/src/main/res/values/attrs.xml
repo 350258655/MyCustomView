@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ToggleButton">
+        <attr name="onBackgroundColor" format="color|reference"/>
+        <attr name="offBackgroundColor" format="color|reference"/>
+        <attr name="onToggleColor" format="color|reference"/>
+        <attr name="offToggleColor" format="color|reference"/>
+    </declare-styleable>
+</resources>
