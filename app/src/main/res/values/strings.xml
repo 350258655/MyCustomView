@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MyCustomView</string>
+    <color name="tab_pressed">#3333ffff</color>
 </resources>
