@@ -10,6 +10,7 @@ import com.example.administrator.mycustomview.floatview.FloatViewActivity;
 import com.example.administrator.mycustomview.numberaddsub.NumberAddSubActivity;
 import com.example.administrator.mycustomview.sliding.SlidingActivity;
 import com.example.administrator.mycustomview.spinner.SpinnerActivity;
+import com.example.administrator.mycustomview.sweep.SweepActivity;
 import com.example.administrator.mycustomview.switchview.SwitchActivity;
 import com.example.administrator.mycustomview.toggle.ToggleButtonActivity;
 import com.example.administrator.mycustomview.wheel.WheelActivity;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button btn_cus_switch = (Button) findViewById(R.id.btn_cus_switch);
         Button btn_float = (Button) findViewById(R.id.btn_float);
         Button btn_sliding = (Button) findViewById(R.id.btn_sliding);
+        Button btn_sweep = (Button) findViewById(R.id.btn_sweep);
         btnaddsub.setOnClickListener(this);
         btnwheel.setOnClickListener(this);
         btn_youku.setOnClickListener(this);
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_cus_switch.setOnClickListener(this);
         btn_float.setOnClickListener(this);
         btn_sliding.setOnClickListener(this);
+        btn_sweep.setOnClickListener(this);
 
     }
 
@@ -68,6 +71,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_sliding:
                 startActivity(new Intent(MainActivity.this,SlidingActivity.class));
+                break;
+            case R.id.btn_sweep:
+                startActivity(new Intent(MainActivity.this,SweepActivity.class));
                 break;
         }
     }

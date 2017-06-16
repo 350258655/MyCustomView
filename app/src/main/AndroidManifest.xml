@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.example.administrator.mycustomview"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.administrator.mycustomview">
 
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
-    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
 
     <application
         android:allowBackup="true"
@@ -13,31 +13,23 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".numberaddsub.NumberAddSubActivity">
-        </activity>
-        <activity android:name=".spinner.SpinnerActivity">
-        </activity>
-        <activity android:name=".switchview.SwitchActivity">
-        </activity>
-        <activity android:name=".toggle.ToggleButtonActivity">
-        </activity>
-        <activity android:name=".wheel.WheelActivity">
-        </activity>
-        <activity android:name=".youku.YoukuMenuActivity">
-        </activity>
-        <activity android:name=".floatview.FloatViewActivity">
-        </activity>
+        <activity android:name=".numberaddsub.NumberAddSubActivity" />
+        <activity android:name=".spinner.SpinnerActivity" />
+        <activity android:name=".switchview.SwitchActivity" />
+        <activity android:name=".toggle.ToggleButtonActivity" />
+        <activity android:name=".wheel.WheelActivity" />
+        <activity android:name=".youku.YoukuMenuActivity" />
+        <activity android:name=".floatview.FloatViewActivity" />
 
-        <service android:name=".floatview.FloatViewService">
-        </service>
+        <service android:name=".floatview.FloatViewService" />
 
-        <activity android:name=".sliding.SlidingActivity">
-        </activity>
+        <activity android:name=".sliding.SlidingActivity" />
+        <activity android:name=".sweep.SweepActivity" />
     </application>
 
 </manifest>
