@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // 测试一下新拉去的代码
         Button btnwheel = (Button) findViewById(R.id.btn_wheel);
         Button btnaddsub = (Button) findViewById(R.id.btn_add_sub);
         Button btn_youku = (Button) findViewById(R.id.btn_youku);
