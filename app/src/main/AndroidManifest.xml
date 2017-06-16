@@ -30,6 +30,7 @@
 
         <activity android:name=".sliding.SlidingActivity" />
         <activity android:name=".sweep.SweepActivity" />
+        <activity android:name=".loadingdialog.LoadingDialogActivity"></activity>
     </application>
 
 </manifest>
