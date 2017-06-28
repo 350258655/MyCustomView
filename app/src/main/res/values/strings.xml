@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">MyCustomView</string>
     <color name="tab_pressed">#3333ffff</color>
+    <string name="title_activity_exit_dialog">ExitDialogActivity</string>
 </resources>

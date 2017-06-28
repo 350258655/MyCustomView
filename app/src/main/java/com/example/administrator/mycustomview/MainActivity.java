@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.administrator.mycustomview.exitdialog.ExitDialogActivity;
 import com.example.administrator.mycustomview.floatview.FloatViewActivity;
 import com.example.administrator.mycustomview.loadingdialog.LoadingDialogActivity;
 import com.example.administrator.mycustomview.numberaddsub.NumberAddSubActivity;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button btn_sliding = (Button) findViewById(R.id.btn_sliding);
         Button btn_sweep = (Button) findViewById(R.id.btn_sweep);
         Button btn_loading_dialog = (Button) findViewById(R.id.btn_loading_dialog);
+        Button btn_exit_dialog = (Button) findViewById(R.id.btn_exit_dialog);
         btnaddsub.setOnClickListener(this);
         btnwheel.setOnClickListener(this);
         btn_youku.setOnClickListener(this);
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_sliding.setOnClickListener(this);
         btn_sweep.setOnClickListener(this);
         btn_loading_dialog.setOnClickListener(this);
+        btn_exit_dialog.setOnClickListener(this);
 
     }
 
@@ -80,6 +83,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_loading_dialog:
                 startActivity(new Intent(MainActivity.this,LoadingDialogActivity.class));
+                break;
+            case R.id.btn_exit_dialog:
+                startActivity(new Intent(MainActivity.this,ExitDialogActivity.class));
                 break;
         }
     }
