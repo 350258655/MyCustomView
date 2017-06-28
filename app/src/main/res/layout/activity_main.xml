@@ -46,6 +46,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="悬浮窗"/>
+
+    <Button
+        android:id="@+id/btn_float_second"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="另一种悬浮窗"/>
+
     <Button
         android:id="@+id/btn_sliding"
         android:layout_width="match_parent"

@@ -233,8 +233,7 @@ public class FloatView extends FrameLayout implements View.OnTouchListener {
             case MotionEvent.ACTION_DOWN:
                 mTouchStartX = event.getX();
                 mTouchStartY = event.getY();
-               // mIvFloatLogo.setImageResource(R.drawable.pj_image_float_logo);
-                mIvFloatLogo.setImageResource(R.drawable.xiaohao);
+               mIvFloatLogo.setImageResource(R.drawable.pj_image_float_logo);
                 // 设置透明度
                 mWmParams.alpha = 1f;
                 mWindowManager.updateViewLayout(this, mWmParams);
@@ -267,8 +266,7 @@ public class FloatView extends FrameLayout implements View.OnTouchListener {
                     mWmParams.x = 0;
                     mIsRight = false;
                 }
-              //  mIvFloatLogo.setImageResource(R.drawable.pj_image_float_logo);
-                mIvFloatLogo.setImageResource(R.drawable.xiaohao);
+               mIvFloatLogo.setImageResource(R.drawable.pj_image_float_logo);
                 // 刷新界面
                 refreshFloatMenu(mIsRight);
                 // 启动隐藏定时任务
@@ -288,8 +286,7 @@ public class FloatView extends FrameLayout implements View.OnTouchListener {
             setVisibility(VISIBLE);
             if (mShowLoader) {
                 // 更新界面参数
-                mIvFloatLogo.setImageResource(R.drawable.xiaohao);
-              //  mIvFloatLogo.setImageResource(R.drawable.pj_image_float_logo);
+                mIvFloatLogo.setImageResource(R.drawable.pj_image_float_logo);
                 mWmParams.alpha = 1f;
                 mWindowManager.updateViewLayout(this, mWmParams);
 

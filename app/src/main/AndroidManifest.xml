@@ -36,6 +36,8 @@
             android:label="@string/title_activity_exit_dialog"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity android:name=".floatdialog.FloatDialogActivity">
+        </activity>
     </application>
 
 </manifest>

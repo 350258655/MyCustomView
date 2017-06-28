@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@+id/hd_game_menu"
+             xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="350dp"
+             android:layout_height="50dp"
+             android:orientation="vertical">
+
+    <!-- 这是放置菜单的布局。假如没有那么多菜单，宽度应该设置小一点-->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/hd_game_line"
+        android:background="@drawable/hd_float_dialog_bg"
+        android:visibility="gone"
+        android:layout_width="300dp"
+        android:layout_height="50dp"></LinearLayout>
+
+
+
+    <!-- 这是放悬浮球的-->
+    <FrameLayout
+        android:id="@+id/hd_game_fra"
+        android:layout_width="50dp"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:id="@+id/hd_game_logo"
+            android:scaleType="centerInside"
+            android:src="@mipmap/hd_image_float_logo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+        <ImageView
+            android:id="@+id/hd_game_loader"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="centerInside"
+            android:src="@mipmap/hd_anim_background"/>
+    </FrameLayout>
+
+
+</FrameLayout>

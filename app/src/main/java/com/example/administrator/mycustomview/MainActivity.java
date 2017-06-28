@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.administrator.mycustomview.exitdialog.ExitDialogActivity;
+import com.example.administrator.mycustomview.floatdialog.FloatDialogActivity;
 import com.example.administrator.mycustomview.floatview.FloatViewActivity;
 import com.example.administrator.mycustomview.loadingdialog.LoadingDialogActivity;
 import com.example.administrator.mycustomview.numberaddsub.NumberAddSubActivity;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button btn_sweep = (Button) findViewById(R.id.btn_sweep);
         Button btn_loading_dialog = (Button) findViewById(R.id.btn_loading_dialog);
         Button btn_exit_dialog = (Button) findViewById(R.id.btn_exit_dialog);
+        Button btn_float_second = (Button) findViewById(R.id.btn_float_second);
         btnaddsub.setOnClickListener(this);
         btnwheel.setOnClickListener(this);
         btn_youku.setOnClickListener(this);
@@ -47,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_sweep.setOnClickListener(this);
         btn_loading_dialog.setOnClickListener(this);
         btn_exit_dialog.setOnClickListener(this);
+        btn_float_second.setOnClickListener(this);
 
     }
 
@@ -86,6 +89,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_exit_dialog:
                 startActivity(new Intent(MainActivity.this,ExitDialogActivity.class));
+                break;
+            case R.id.btn_float_second:
+                startActivity(new Intent(MainActivity.this,FloatDialogActivity.class));
                 break;
         }
     }
