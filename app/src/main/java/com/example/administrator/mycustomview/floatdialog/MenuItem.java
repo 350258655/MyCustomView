@@ -13,7 +13,7 @@ public class MenuItem {
     private int mTextColor = android.R.color.white;
     private int mDiameter = 50; // 这个应该是各个Item的距离
     private View.OnClickListener mOnClickListener;
-    private boolean mShowdivider = true; // 显示分割线
+    public boolean mShowdivider = true; // 显示分割线
 
     public MenuItem(int textColor, int icon, String label, View.OnClickListener onClickListener, boolean showDivider) {
         mTextColor = textColor;

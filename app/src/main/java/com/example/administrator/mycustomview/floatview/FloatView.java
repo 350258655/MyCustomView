@@ -33,6 +33,7 @@ import java.util.TimerTask;
  */
 public class FloatView extends FrameLayout implements View.OnTouchListener {
 
+
     private final int HANDLER_TYPE_HIDE_LOGO = 100;//隐藏LOGO
     private final int HANDLER_TYPE_CANCEL_ANIM = 101;//退出动画
 
@@ -53,10 +54,10 @@ public class FloatView extends FrameLayout implements View.OnTouchListener {
 
     private Timer mTimer;
     private TimerTask mTimerTask;
-    private boolean mDraging; //是否正在移动
+    private boolean mDraging; // 是否正在移动
 
-    private boolean mIsRight;//logo是否在右边
-    private boolean mCanHide;//是否允许隐藏
+    private boolean mIsRight;  // logo是否在右边
+    private boolean mCanHide;  // 是否允许隐藏
     private float mTouchStartX;
     private float mTouchStartY;
     private boolean mShowLoader = true; //显示旋转动画
@@ -68,10 +69,24 @@ public class FloatView extends FrameLayout implements View.OnTouchListener {
                 // 隐藏悬浮框
                 if (mCanHide) {
                     mCanHide = false;
+
+                    LayoutParams params = (LayoutParams) mFlFloatLogo.getLayoutParams();
+                    // 隐藏掉 2/3
+                    int margin = params.width * 2 / 3;
                     if (mIsRight) {
-                        mIvFloatLogo.setImageResource(R.drawable.pj_image_float_right);
+                        // mIvFloatLogo.setImageResource(R.drawable.pj_image_float_right);
+                        params.setMargins(0, 0, -margin, 0);
+                        // 设置padding可以让整个小球看起来变小,因为有了padding，子view所占空间就会被压缩
+                        // mFlFloatLogo.setPadding(0, 16, 16, 16);
+                        mFlFloatLogo.setLayoutParams(params);
                     } else {
-                        mIvFloatLogo.setImageResource(R.drawable.pj_image_float_left);
+
+                        params.setMargins(-margin, 0, 0, 0);
+                        // 设置padding可以让整个小球看起来变小,因为有了padding，子view所占空间就会被压缩
+                        // mFlFloatLogo.setPadding(0, 16, 16, 16);
+                        mFlFloatLogo.setLayoutParams(params);
+
+
                     }
                     //降低透明度
                     mWmParams.alpha = 0.7f;
@@ -79,7 +94,10 @@ public class FloatView extends FrameLayout implements View.OnTouchListener {
                     refreshFloatMenu(mIsRight);
                     mLlFloatMenu.setVisibility(GONE);
                 }
+
             } else if (msg.what == HANDLER_TYPE_CANCEL_ANIM) {
+                // 设置悬浮球默认大小
+                resetLogoSize();
                 // 隐藏“旋转”动画
                 mIvFloatLoader.clearAnimation();
                 mIvFloatLoader.setVisibility(GONE);
@@ -188,6 +206,7 @@ public class FloatView extends FrameLayout implements View.OnTouchListener {
         });
         // 设置整个View的触摸事件
         rootFloatView.setOnTouchListener(this);
+
         // 设置整个View的点击事件
         rootFloatView.setOnClickListener(new OnClickListener() {
             @Override
@@ -215,6 +234,20 @@ public class FloatView extends FrameLayout implements View.OnTouchListener {
 
 
     /**
+     * 悬浮球缩进屏幕后，恢复原始状态
+     */
+    private void resetLogoSize() {
+
+        int length = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50, mContext.getResources().getDisplayMetrics());
+        LayoutParams params = (LayoutParams) mFlFloatLogo.getLayoutParams();
+        params.width = length;
+        params.height = length;
+        params.setMargins(0, 0, 0, 0);
+        mFlFloatLogo.setLayoutParams(params);
+    }
+
+
+    /**
      * getX()和getRawX()的区别
      *
      * @param v
@@ -232,8 +265,13 @@ public class FloatView extends FrameLayout implements View.OnTouchListener {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 mTouchStartX = event.getX();
+                // mIvFloatLogo.setImageResource(R.drawable.pj_image_float_logo);
+                mIvFloatLogo.setImageResource(R.drawable.image_logo);
+
+                // 恢复悬浮窗原本状态
+                resetLogoSize();
+
                 mTouchStartY = event.getY();
-               mIvFloatLogo.setImageResource(R.drawable.pj_image_float_logo);
                 // 设置透明度
                 mWmParams.alpha = 1f;
                 mWindowManager.updateViewLayout(this, mWmParams);
@@ -266,7 +304,6 @@ public class FloatView extends FrameLayout implements View.OnTouchListener {
                     mWmParams.x = 0;
                     mIsRight = false;
                 }
-               mIvFloatLogo.setImageResource(R.drawable.pj_image_float_logo);
                 // 刷新界面
                 refreshFloatMenu(mIsRight);
                 // 启动隐藏定时任务
@@ -277,16 +314,21 @@ public class FloatView extends FrameLayout implements View.OnTouchListener {
                 mTouchStartY = mTouchStartY = 0;
                 break;
         }
+
+
         return false;
     }
 
 
     public void show() {
+        // 设置默认大小
+        resetLogoSize();
         if (getVisibility() != VISIBLE) {
             setVisibility(VISIBLE);
             if (mShowLoader) {
                 // 更新界面参数
-                mIvFloatLogo.setImageResource(R.drawable.pj_image_float_logo);
+                // mIvFloatLogo.setImageResource(R.drawable.pj_image_float_logo);
+                // mIvFloatLogo.setImageResource(R.drawable.image_logo);
                 mWmParams.alpha = 1f;
                 mWindowManager.updateViewLayout(this, mWmParams);
 
@@ -360,6 +402,7 @@ public class FloatView extends FrameLayout implements View.OnTouchListener {
         if (isRight) {
             // 设置图片在菜单的右边
             FrameLayout.LayoutParams paramsFloatImage = (LayoutParams) mIvFloatLogo.getLayoutParams();
+            paramsFloatImage.setMargins(0, 0, 0, 0);
             paramsFloatImage.gravity = Gravity.RIGHT;
             mIvFloatLogo.setLayoutParams(paramsFloatImage);
 
@@ -368,7 +411,7 @@ public class FloatView extends FrameLayout implements View.OnTouchListener {
             paramsFlFloat.gravity = Gravity.RIGHT;
             mFlFloatLogo.setLayoutParams(paramsFlFloat);
 
-            // 设置"个人中心"的界面
+            // 设置"个人中心"的界面。这方法，应该是将DP转为PX或者具体像素的
             int padding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, mContext.getResources().getDisplayMetrics());
             LinearLayout.LayoutParams paramsMenuAccount = (LinearLayout.LayoutParams) mTvAccount.getLayoutParams();
             paramsMenuAccount.rightMargin = padding;
@@ -381,6 +424,7 @@ public class FloatView extends FrameLayout implements View.OnTouchListener {
             paramsMenuFb.rightMargin = padding52;
             paramsMenuFb.leftMargin = padding;
             mTvFeedback.setLayoutParams(paramsMenuFb);
+
         } else {
             // 设置图片在菜单的左边
             FrameLayout.LayoutParams paramsFloatImage = (LayoutParams) mIvFloatLogo.getLayoutParams();
@@ -407,6 +451,7 @@ public class FloatView extends FrameLayout implements View.OnTouchListener {
             paramsMenuFb.leftMargin = padding;
             mTvFeedback.setLayoutParams(paramsMenuFb);
         }
+
     }
 
 
@@ -458,34 +503,37 @@ public class FloatView extends FrameLayout implements View.OnTouchListener {
         mScreenWidth = dm.widthPixels;
         mScreenHeight = dm.heightPixels;
 
-        Log.i("TAG", FloatView.class+",onConfigurationChanged,横屏之后的宽："+mScreenWidth+",高："+mScreenHeight);
+        Log.i("TAG", FloatView.class + ",onConfigurationChanged,横屏之后的宽：" + mScreenWidth + ",高：" + mScreenHeight);
         // 其实旋转屏幕之后，在init()方法已经更新了 mWmParams.x和mWmParams.y了，所以这里的x和y其实是当前屏幕方向的信息了
         int oldX = mWmParams.x;
         int oldY = mWmParams.y;
-        Log.i("TAG", FloatView.class+",onConfigurationChanged,以前的高："+oldY);
+        Log.i("TAG", FloatView.class + ",onConfigurationChanged,以前的高：" + oldY);
 
         switch (newConfig.orientation) {
 
             case Configuration.ORIENTATION_LANDSCAPE: // 横屏
-                if(mIsRight){
+                if (mIsRight) {
                     mWmParams.x = mScreenWidth;
                     mWmParams.y = oldY;
-                }else {
+                } else {
                     mWmParams.x = oldX;
                     mWmParams.y = oldY;
                 }
                 break;
 
-            case Configuration.ORIENTATION_PORTRAIT : // 竖屏
-                if(mIsRight){
+            case Configuration.ORIENTATION_PORTRAIT: // 竖屏
+                if (mIsRight) {
                     mWmParams.x = mScreenHeight;
                     mWmParams.y = oldY;
-                }else {
+                } else {
                     mWmParams.x = oldX;
                     mWmParams.y = oldY;
                 }
                 break;
         }
-        mWindowManager.updateViewLayout(this,mWmParams);
+        mWindowManager.updateViewLayout(this, mWmParams);
     }
+
+
+
 }
